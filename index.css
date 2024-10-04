@@ -1,50 +1,47 @@
 :root {
-  --body_back_1: aqua;
-  --body_back_2: whitesmoke;
-  --main-color: rgb(232, 95, 95);
-  --main-back: whitesmoke;
-  --shadow_color: rgba(0, 0, 0, 0.75);
-  --score_back_1: rgba(247, 221, 135, 0.75);
-  --score_back_2: rgba(247, 233, 189, 0.75);
+  --body_back_1: #0d7377; /* Soft teal */
+  --body_back_2: #14ffec; /* Light turquoise */
+  --main-color: #fff; /* White text color */
+  --main-back: #212d40; /* Dark background for the game area */
+  --shadow_color: rgba(0, 0, 0, 0.25);
+  --score_back_1: rgba(255, 221, 135, 0.85); /* Light golden score background */
+  --score_back_2: rgba(255, 233, 189, 0.85); /* Soft yellow score background */
   --score_shadow_1: -2px 6px 18px 3px var(--shadow_color);
   --score_shadow_2: none;
-  --button_back_1: rgb(232, 95, 95);
-  --button_back_2: rgb(240, 151, 151);
+  --button_back_1: #f18a93; /* Pinkish red button */
+  --button_back_2: #f77f7f; /* Lighter red button */
   --button_color: #fff;
-  --test: #19c9d0;
-  /* --test: rgb(243, 119, 74);
-  --test: rgb(240, 162, 90);
-  --test: rgb(218, 140, 68);
-  --test: rgb(102, 100, 98); */
+  --accent-color: #19c9d0; /* Bright accent color */
+  --highlight-color: #f1a7a7; /* Highlight color for hover and active states */
 }
-html {
-  height: 1vh;
+
+html, body {
+  height: 100%; /* Ensure both html and body take up the full viewport height */
+  margin: 0;
 }
 
 body {
-  margin: 0;
-  background-image: linear-gradient(
-    135deg,
-    var(--body_back_1),
-    var(--body_back_2)
-  );
-  color: var(--main-color);
-  /* min-width: 450px; */
-  /* height: 600px; */
-  font-family: "Roboto", sans-serif;
-  display: grid;
-  place-items: center;
-  font-size: 16px;
+  background-image: linear-gradient(135deg, var(--body_back_1), var(--body_back_2)); /* Gradient background */
+  color: var(--main-color); /* Text color */
+  font-family: "Roboto", sans-serif; /* Font family */
+  display: grid; /* Use grid for centering */
+  place-items: center; /* This is shorthand for centering both horizontally and vertically */
+  font-size: 16px; /* Set base font size */
+  height: 100%; /* Ensure body takes up full height */
 }
 
+
 .game {
-  padding: 0;
+  padding: 20px;
   position: relative;
-  top: 25%;
+  top: auto;
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
 
 main {
-  max-width: 250px;
+  max-width: 350px;
   margin: 0 auto;
   padding: 2rem;
   background-color: var(--main-back);
@@ -52,7 +49,28 @@ main {
   box-shadow: -2px 6px 18px 3px var(--shadow_color);
   text-align: center;
   display: none;
+  transition: transform 0.3s ease-in-out;
 }
+
+main:hover {
+  transform: scale(1.05);
+}
+
+.modal-container {
+  position: absolute;
+  max-width: 350px;
+  padding: 30px;
+  background-color: var(--main-back);
+  border-radius: 10px;
+  box-shadow: -2px 6px 18px 3px var(--shadow_color);
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  left: 35%;
+  top: 5%;
+  z-index: 10;
+}
+
 
 .modal-container {
   position: absolute;
@@ -92,16 +110,14 @@ h1 {
 }
 
 .score {
-  background-image: linear-gradient(
-    135deg,
-    var(--score_back_1),
-    var(--score_back_2)
-  );
-  padding: 30px 35px;
+  background-image: linear-gradient(135deg, var(--score_back_1), var(--score_back_2));
+  padding: 20px 25px;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
-  width: 20px;
+  width: 100px;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
 }
 
 .score.score-1 {
@@ -112,20 +128,36 @@ h1 {
   box-shadow: var(--score_shadow_2);
 }
 
+.score:hover {
+  background-color: var(--highlight-color);
+}
+
+/* Button hover effect */
+/* Button hover effect */
+button {
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: var(--highlight-color);
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .btn {
-  background-image: linear-gradient(
-    135deg,
-    var(--button_back_1),
-    var(--button_back_2)
-  );
+  background-image: linear-gradient(135deg, var(--button_back_1), var(--button_back_2));
   color: var(--button_color);
   border: none;
-  padding: 15px 25px;
+  padding: 15px 30px;
   margin: 10px 0 5px;
   font-weight: bold;
-  /* transform: translateX(-50%); */
-  width: 200px;
+  width: 220px;
+  font-size: 18px;
 }
+
 
 .info-btns {
   display: grid;
@@ -189,6 +221,24 @@ li {
   border-radius: 50%;
   padding: 0;
   /* left: 15%; */
+}
+@media (max-width: 400px) {
+  .modal-container {
+    left: 5%;
+    top: 2%;
+    padding: 2.5px;
+  }
+  .game {
+    top: 2%;
+  }
+
+  .theme {
+    margin: 5px 0 5px 10px;
+  }
+  .chng-winning-score {
+    left: 15%;
+    width: 60%;
+  }
 }
 @media (max-width: 400px) {
   .modal-container {
