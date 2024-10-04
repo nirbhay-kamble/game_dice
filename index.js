@@ -69,6 +69,10 @@ let warm = {
     
 }
 
+
+
+
+
 dice.addEventListener("click",()=>{
     if (has_won){
         restart()
@@ -129,6 +133,7 @@ function checkWinner(){
         // }
     }
 }
+
 
 dblNothingBtn.addEventListener("click", ()=>{
     dbl_nothing = Math.ceil(Math.random() * 2)

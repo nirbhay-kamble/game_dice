@@ -17,19 +17,25 @@
             <input type="text">
             <button class = "btn" id ="chng">Change</button>
         </div>
-        <div class = "game">
+        <div class="game">
             <main>
                 <button class="btn get-info">❔</button>
-                <h1 class ="state">Player 1's Turn</h1>
-                <div class ="container">
-                    <div class ="players player-1">
-                        <h2>Score: <span class = "player-1-score">0</span></h2>
-                        <div class = "score score-1">0</div>
+                <h1 class="state">Player 1's Turn</h1>
+                
+                <!-- Timer Display -->
+                <div id="timer" style="font-size: 20px; color: var(--highlight-color); font-weight: bold;">
+                    Time Left: 30s
+                </div>
+                
+                <div class="container">
+                    <div class="players player-1">
+                        <h2>Score: <span class="player-1-score">0</span></h2>
+                        <div class="score score-1">0</div>
                     </div>
                     
-                    <div class ="players player-2">
-                        <h2>Score:<span class = "player-2-score">0</span></h2>
-                        <div class = "score score-2">0</div>
+                    <div class="players player-2">
+                        <h2>Score:<span class="player-2-score">0</span></h2>
+                        <div class="score score-2">0</div>
                     </div>
                 </div>
                 <div class = "buttons">
@@ -37,6 +43,9 @@
                     <button class = "btn dice visible" id = "dbl-0">Double😀/Negative😭</button>
                     <button class = "btn dice hidden" id = "reset"> Reset 🔁 </button>
                 </div>
+                <!-- Game Statistics Section -->
+               
+
             </main>
         </div>
         <div class = "modal-container">
